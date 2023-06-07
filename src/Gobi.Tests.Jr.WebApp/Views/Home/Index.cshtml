@@ -1,0 +1,50 @@
+﻿@using Gobi.Test.Jr.Domain;
+@model IEnumerable<TodoItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Tarefas</h1>
+
+<p>
+    <a asp-action="Create">Criar novo item</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Completed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finished)
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Completed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+                <th>
+                    @Html.DisplayFor(modelItem => item.Finished)
+                </th>
+                
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
